@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GitHub Issues Tracker</title>
+
+    <!-- tailwinds and daisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white shadow-lg p-10 rounded-lg w-96 text-center">
+      <div class="flex justify-center mb-4">
+        <img src="./assets/github-logo.png" class="w-16" />
+      </div>
+
+      <h1 class="text-2xl font-bold mb-2">GitHub Issues Tracker</h1>
+      <p class="text-gray-500 mb-6">Sign in to manage your issues</p>
+
+      <form id="loginForm">
+        <div class="text-left mb-4">
+          <label class="text-sm font-semibold"> Username </label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter Username"
+            class="w-full border mt-1 p-2 rounded"
+          />
+          <p class="text-xs text-blue-500 mt-1">Default: admin</p>
+        </div>
+
+        <div class="text-left mb-6">
+          <label class="text-sm font-semibold"> Password </label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+            class="w-full border mt-1 p-2 rounded"
+          />
+          <p class="text-xs text-blue-500 mt-1">Default: admin123</p>
+        </div>
+
+        <button
+          class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+        >
+          Sign In
+        </button>
+      </form>
+
+      <div class="mt-6 text-sm text-gray-500">
+        <p class="font-semibold p-[3px_0_20px]">Demo Credentials:</p>
+
+        <p><b>Username:</b> admin</p>
+        <p><b>Password:</b> admin123</p>
+      </div>
+    </div>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
