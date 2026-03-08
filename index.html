@@ -21,10 +21,10 @@
     />
   </head>
 
-  <body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="bg-white shadow-lg p-10 rounded-lg w-96 text-center">
+  <body class=" flex items-center justify-center h-screen bg-gray-100 font-geist">
+    <div class="bg-white text-center shadow-lg p-10 rounded-lg w-96 ">
       <div class="flex justify-center mb-4">
-        <img src="./assets/github-logo.png" class="w-16" />
+        <img  class="w-16" src="./assets/github-logo.png" />
       </div>
 
       <h1 class="text-[24px] font-bold mb-2">GitHub Issues Tracker</h1>
@@ -32,7 +32,7 @@
 
       <form id="loginForm">
         <div class="text-left mb-4">
-          <label class="text-sm font-semibold"> Username </label>
+          <label class="text-[14px] font-semibold"> Username </label>
           <input
             type="text"
             id="username"
@@ -43,24 +43,30 @@
         </div>
 
         <div class="text-left mb-6">
-          <label class="text-sm font-semibold"> Password </label>
+          <label class="text-[14px] font-semibold"> Password </label>
           <input
             type="password"
             id="password"
             placeholder="Enter Password"
             class="w-full border mt-1 p-2 rounded"
           />
-          <p class="text-xs text-[#4A00FF] mt-1">Default: admin123</p>
+          <p class="text-[12px] text-[#4A00FF] mt-1">Default: admin123</p>
         </div>
 
         <button
-          class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 cursor-pointer"
+          class="w-full bg-blue-600 text-white p-2 hover:bg-blue-700 cursor-pointer rounded"
         >
           Sign In
         </button>
       </form>
 
-      <div class="mt-6 text-sm text-[#64748B]">
+      <div class="flex items-center my-4">
+        <hr class="flex-grow border-gray-300" />
+        <span class="mx-2 text-[#64748B]">OR</span>
+        <hr class="flex-grow border-gray-300" />
+      </div>
+
+      <div class="mt-6 text-[14px] text-[#64748B]">
         <p class="font-semibold p-[3px_0_20px] text-[#64748B]">
           Demo Credentials:
         </p>
@@ -69,7 +75,7 @@
         <p><b>Password:</b> admin123</p>
       </div>
     </div>
-             <!-- javascript -->
+    <!-- javascript -->
     <script src="./scripts.js"></script>
   </body>
 </html>

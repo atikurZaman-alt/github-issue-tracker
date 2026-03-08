@@ -27,7 +27,7 @@
     />
   </head>
 
-  <body class="bg-gray-100">
+  <body class="bg-gray-100 font-geist">
     <script>
       const isLoggedIn = localStorage.getItem("loggedIn");
       if (isLoggedIn !== "true") {
@@ -35,16 +35,15 @@
       }
     </script>
 
-    <!-- NAVBAR -->
+    <!-- navbar part -->
 
     <div class="navbar bg-white shadow px-10">
       <div class="flex-1 flex items-center gap-2">
-        <img
+        <img class="w-10 h-10 mr-3"
           src="./assets/github-logo.png"
-          alt="GitHub Logo"
-          class="w-10 h-10 mr-3"
+          alt=""
         />
-        <h1 class="text-xl font-bold">GitHub Issues Tracker</h1>
+        <h1 class="text-[20px] font-bold">GitHub Issues Tracker</h1>
       </div>
 
       <div class="flex gap-2">
@@ -61,10 +60,11 @@
       </div>
     </div>
 
-    <!-- MAIN CONTAINER -->
+    <!-- main container started -->
 
-    <div class="max-w-7xl mx-auto mt-10">
-      <!-- TAB BUTTONS -->
+    <div class="max-w-[1280px] mx-auto mt-10">
+    
+      <!-- tab buttons section -->
 
       <div class="bg-white p-5 rounded shadow">
         <div class="flex gap-2 mb-4">
@@ -105,13 +105,13 @@
         </div>
       </div>
 
-      <!-- LOADING -->
+    <!-- loading indicator -->
 
       <div id="loading" class="text-center mt-10 hidden">
         <span class="loading loading-spinner loading-lg"></span>
       </div>
 
-      <!-- ISSUE CARDS -->
+    <!-- issues container -->
 
       <div
         id="issuesContainer"
@@ -119,21 +119,21 @@
       ></div>
     </div>
 
-    <!-- MODAL -->
+  <!-- issue modal -->
 
     <dialog id="issueModal" class="modal">
       <div class="modal-box max-w-xl p-6">
-        <h3 id="modalTitle" class="text-xl font-bold mb-2"></h3>
+        <h3 id="modalTitle" class="text-[20px] font-bold mb-2"></h3>
 
         <div class="flex items-center gap-3 mb-4">
           <span
             id="modalStatus"
-            class="px-3 py-1 text-xs rounded-full bg-green-100 text-green-600 font-semibold"
+            class="px-3 py-1 text-[12px] rounded-full bg-green-100 text-green-600 font-semibold"
           >
           </span>
 
-          <span class="text-sm text-gray-500">
-            Opened by <b id="modalAuthor"></b> • <span id="modalDate"></span>
+          <span class="text-[14px] text-[#64748B]">
+            Opened by <b id="modalAuthor"></b> | <span id="modalDate"></span>
           </span>
         </div>
 
@@ -151,16 +151,16 @@
           </span>
         </div>
 
-        <p id="modalDesc" class="text-gray-600 mb-6"></p>
+        <p id="modalDesc" class="text-[#64748B] mb-6"></p>
 
         <div class="flex justify-between bg-gray-100 rounded p-4">
           <div>
-            <p class="text-xs text-gray-500">Assignee:</p>
+            <p class="text-[12px] text-[#64748B]">Assignee:</p>
             <p id="modalAssignee" class="font-semibold"></p>
           </div>
 
           <div class="text-right">
-            <p class="text-xs text-gray-500">Priority:</p>
+            <p class="text-[12px] text-[#64748B]">Priority:</p>
             <span
               id="modalPriority"
               class="px-3 py-1 text-xs rounded-full bg-red-500 text-white font-semibold"
