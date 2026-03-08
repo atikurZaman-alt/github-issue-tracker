@@ -43,13 +43,11 @@ async function loadIssues(type = "all"){
 
   const res = await fetch(API);
   const data = await res.json();
-
   let issues = data.data;
 
   if (type === "open") {
     issues = issues.filter((issue) => issue.status.toLowerCase() === "open");
   }
-
   if (type === "closed") {
     issues = issues.filter((issue) => issue.status.toLowerCase() === "closed");
   }
@@ -75,9 +73,7 @@ function getCategoryColor(category) {
   const text = category.toLowerCase();
 
   if (text.includes("bug")) return "badge badge-error";
-
   if (text.includes("enhancement")) return "badge badge-success";
-
   if (text.includes("help")) return "badge badge-warning";
 
   return "badge badge-neutral";
@@ -88,7 +84,6 @@ function getCategoryColor(category) {
 function createCard(issue) {
 
   const status = issue.status?.toLowerCase();
-
   const border =
     status === "open"
       ? "border-t-4 border-green-500"
