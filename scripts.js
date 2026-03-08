@@ -1,4 +1,4 @@
-// login page section
+// login form 
 
 const form = document.getElementById("loginForm");
 
@@ -25,7 +25,7 @@ function logout() {
   window.location.href = "login.html";
 }
 
-// main page section
+// main page functions
 
 const API = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
 
@@ -34,8 +34,9 @@ const count = document.getElementById("issueCount");
 const loading = document.getElementById("loading");
 const tabButtons = document.querySelectorAll(".tabBtn");
 
+// load issues function
 
-async function loadIssues(type = "all"){
+async function loadIssues(type = "all") {
   if (!container) return;
 
   container.innerHTML = "";
@@ -45,13 +46,17 @@ async function loadIssues(type = "all"){
   const data = await res.json();
   let issues = data.data;
 
+  // filter issues
+
   if (type === "open") {
     issues = issues.filter((issue) => issue.status.toLowerCase() === "open");
   }
+
   if (type === "closed") {
     issues = issues.filter((issue) => issue.status.toLowerCase() === "closed");
   }
 
+  // active tab
 
   tabButtons.forEach((btn) => btn.classList.remove("btn-primary"));
 
@@ -66,6 +71,7 @@ async function loadIssues(type = "all"){
   issues.forEach((issue) => createCard(issue));
 }
 
+// colour function for category and labels
 
 function getCategoryColor(category) {
   if (!category) return "badge badge-neutral";
@@ -79,11 +85,37 @@ function getCategoryColor(category) {
   return "badge badge-neutral";
 }
 
-// create issue card
+// labels function
+
+function getLabels(issue) {
+  let html = "";
+
+  if (issue.category) {
+    html += `
+      <span class="${getCategoryColor(issue.category)}">
+        ${issue.category}
+      </span>
+    `;
+  }
+
+  if (issue.labels && issue.labels.length) {
+    issue.labels.forEach((label) => {
+      html += `
+        <span class="${getCategoryColor(label)}">
+          ${label}
+        </span>
+      `;
+    });
+  }
+
+  return html;
+}
+
+// create card function
 
 function createCard(issue) {
-
   const status = issue.status?.toLowerCase();
+
   const border =
     status === "open"
       ? "border-t-4 border-green-500"
@@ -94,22 +126,28 @@ function createCard(issue) {
       ? "./assets/Open-Status.png"
       : "./assets/Closed-Status.png";
 
-
   let priorityClass = "badge";
 
   if (issue.priority?.toLowerCase() === "high") {
     priorityClass = "badge badge-error";
-  } 
-  else if (issue.priority?.toLowerCase() === "medium") {
+  } else if (issue.priority?.toLowerCase() === "medium") {
     priorityClass = "badge badge-warning";
-  } 
-  else {
+  } else {
     priorityClass = "badge badge-ghost";
   }
 
   const card = document.createElement("div");
 
-  card.className = `bg-white p-5 rounded-lg shadow hover:shadow-md transition cursor-pointer ${border}`;
+  card.className = `
+  bg-white
+  p-5
+  rounded-lg
+  shadow
+  hover:shadow-md
+  transition
+  cursor-pointer
+  ${border}
+  `;
 
   card.innerHTML = `
 
@@ -123,25 +161,21 @@ function createCard(issue) {
 
   </div>
 
+
   <h2 class="font-semibold mt-2">
       ${issue.title}
   </h2>
+
 
   <p class="text-sm text-[#64748B] mt-2">
       ${issue.description ? issue.description.slice(0, 90) : ""}...
   </p>
 
+
   <div class="flex gap-2 mt-4">
-
-      <span class="badge badge-error">
-        ${issue.category}
-      </span>
-
-      <span class="badge badge-warning">
-        HELP WANTED
-      </span>
-
+      ${getLabels(issue)}
   </div>
+
 
   <div class="flex justify-between mt-4 text-[12px] text-[#64748B]">
 
@@ -158,6 +192,7 @@ function createCard(issue) {
   container.appendChild(card);
 }
 
+// modal function
 
 async function openModal(id) {
   const res = await fetch(
@@ -178,6 +213,8 @@ async function openModal(id) {
 
   document.getElementById("issueModal").showModal();
 }
+
+// search issue
 
 async function searchIssue() {
   const text = document.getElementById("searchInput").value;
@@ -200,6 +237,8 @@ async function searchIssue() {
 
   loading.classList.add("hidden");
 }
+
+// initial load
 
 if (container) {
   loadIssues();
